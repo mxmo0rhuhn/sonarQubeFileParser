@@ -73,11 +73,6 @@ public class FileParserSensor implements Sensor {
 
         PropertiesBuilder<String, String> stringMap = new PropertiesBuilder<String, String>();
 
-        Map<String, String> props = settings.getProperties();
-        for (String key : props.keySet() ) {
-            LOGGER.info("Properties = Key = " + key + " Value = " + props.get(key));
-        }
-
         File metricsFile = new File(path+"/"+name);
         try {
             BufferedReader myBuffy = new BufferedReader(new FileReader(
