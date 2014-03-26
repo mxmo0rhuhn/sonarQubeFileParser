@@ -1,0 +1,41 @@
+<h2><%= metric('name') -%></h2>
+<%
+    kvMeasure = measure('fileParser-values"')
+    # Only display if data is given
+    if kvMeasure
+        displayHash = {}
+        if kvMeasure.data
+        parts=kvMeasure.data.split(';')
+        parts.each do |part|
+                fields=part.split('=')
+                displayHash[fields[0]]=fields[1]
+                end
+        end
+%>
+        <table width="100%">
+                <tbody>
+            <tr>
+            <!-- Loop um gruppen hier! -->
+            <td valign="top" width="50%">
+            <h3>tbd</h3>
+
+            <table width="100%">
+                    <tbody>
+                            <div class="dashbox">
+                            <% displayHash.each do |key, value| %>
+                            <tr>
+                                    <td align="left"> <%= key -%> </td>
+                                    <td align="left" style="padding-left: 10px;"> <%= value -%> </td>
+                            </tr>
+                            <% end %>
+                            </div>
+                    </tbody>
+            </table>
+                    </td>
+            <!-- Loop um gruppen ende hier! -->
+            </tr>
+            </tbody>
+        </table>
+<% else %>
+ <p> Error occured - no Data to display </p>
+<% end %>

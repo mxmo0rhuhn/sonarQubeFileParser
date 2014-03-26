@@ -1,3 +1,18 @@
+# Eclipse
+*.project
+*.settings
+
+# IntelliJ IDEA
+*.idea
+*.iml
+
+# VIM
+*.swp
+
+# Maven
+target/*
+
+# Java bytecode
 *.class
 
 # Package Files #
