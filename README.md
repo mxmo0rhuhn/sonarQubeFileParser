@@ -14,4 +14,4 @@ Another=One
 
 will be displayed as:
 
-![alt text](https://github.com/mxmo0rhuhn/sonarQubeFileParser/blob/master/sample.png "A sample of some Properties")
+![alt text](https://raw.githubusercontent.com/mxmo0rhuhn/sonarQubeFileParser/master/sample.png "A sample of some Properties")
