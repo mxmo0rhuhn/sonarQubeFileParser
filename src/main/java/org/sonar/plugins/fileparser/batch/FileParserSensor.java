@@ -44,9 +44,19 @@ public class FileParserSensor implements Sensor {
 
     public FileParserSensor(Settings settings) {
         this.settings = settings;
-        this.path = settings.getString(FileParserPlugin.FOLDER_PATH);
-        this.name = settings.getString(FileParserPlugin.FILE_NAME);
+        String path = settings.getString(FileParserPlugin.FOLDER_PATH);
+        String name = settings.getString(FileParserPlugin.FILE_NAME);
         this.regexString = settings.getString(FileParserPlugin.REGEX_STRING);
+
+        if(path == FileParserPlugin.DEFAULT_PATH) {
+            path = settings.getString("sonar.working.directory");
+        }
+
+        if(name == FileParserPlugin.DEFAULT_FILE) {
+            name = settings.getString("POM_ARTIFACTID") + ".fileParser";
+        }
+        this.path = path;
+        this.name = name;
     }
 
     public boolean shouldExecuteOnProject(Project project) {

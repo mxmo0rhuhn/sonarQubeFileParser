@@ -28,32 +28,24 @@ import org.sonar.api.SonarPlugin;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * This class is the entry point for all extensions
- */
-// Properties for an array of Properties
 @Properties({
-        // the Single Property ( 1 - n )
         @Property(
-                // key has to be unique
                 key = FileParserPlugin.FOLDER_PATH,
                 name = "File Path",
                 description = "Specify if you want a special folder to contain the file that shall be displayed",
-                defaultValue = "File Parser Plugin",
+                defaultValue = FileParserPlugin.DEFAULT_PATH,
                 global = true,
                 project = true,
                 module = false),
         @Property(
-                // key has to be unique
                 key = FileParserPlugin.FILE_NAME,
                 name = "File Name",
                 description = "Specify if you want a special name for the file to be displayed",
-                defaultValue = "File Parser Plugin",
+                defaultValue = FileParserPlugin.DEFAULT_FILE,
                 global = true,
                 project = true,
                 module = false),
         @Property(
-                // key has to be unique
                 key = FileParserPlugin.REGEX_STRING,
                 name = "Regular Expression",
                 description = "Regular Expression to split each line of the file. Only the first two results of the split will be considered",
@@ -65,7 +57,9 @@ import java.util.List;
 
 public final class FileParserPlugin extends SonarPlugin {
 
-    // modify the following property (variable name, value) to fit your plugin needs
+
+    public static final String DEFAULT_PATH = "Working directory";
+    public static final String DEFAULT_FILE = "Artifact ID + .fileParser";
     public static final String FOLDER_PATH = "sonar.fileParser.filePath";
     public static final String FILE_NAME = "sonar.fileParser.fileName";
     public static final String REGEX_STRING = "sonar.fileParser.regex";
