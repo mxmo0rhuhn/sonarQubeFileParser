@@ -48,7 +48,7 @@ public class FileParserSensor implements Sensor {
         this.regexString = settings.getString(FileParserPlugin.REGEX_STRING);
 
         if(path.equals(FileParserPlugin.DEFAULT_PATH)) {
-            path = settings.getString("sonar.working.directory");
+            path = settings.getString("sonar.projectBaseDir");
         }
 
         if(name.equals(FileParserPlugin.DEFAULT_FILE)) {
