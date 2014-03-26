@@ -31,9 +31,11 @@ import org.sonar.api.resources.Project;
 import org.sonar.plugins.fileparser.FileParserPlugin;
 
 import java.io.*;
+import java.util.Map;
 
 public class FileParserSensor implements Sensor {
 
+    private final Settings settings;
     private final String path;
     private final String name;
     private final String regexString;
@@ -41,6 +43,7 @@ public class FileParserSensor implements Sensor {
 
 
     public FileParserSensor(Settings settings) {
+        this.settings = settings;
         this.path = settings.getString(FileParserPlugin.FOLDER_PATH);
         this.name = settings.getString(FileParserPlugin.FILE_NAME);
         this.regexString = settings.getString(FileParserPlugin.REGEX_STRING);
@@ -59,6 +62,11 @@ public class FileParserSensor implements Sensor {
         LOGGER.info("File name: " + name);
 
         PropertiesBuilder<String, String> stringMap = new PropertiesBuilder<String, String>();
+
+        Map<String, String> props = settings.getProperties();
+        for (String key : props.keySet() ) {
+            LOGGER.info("Properties = Key = " + key + " Value = " + props.get(key));
+        }
 
         File metricsFile = new File(path+"/"+name);
         try {
@@ -80,7 +88,7 @@ public class FileParserSensor implements Sensor {
         } catch (IOException e) {
             LOGGER.error("Could not read file");
         }
-        LOGGER.info(stringMap.buildData().toString());
+        LOGGER.info("Extracted information: " + stringMap.buildData().toString());
         sensorContext.saveMeasure(new Measure(FileParserMetrics.STRING_MAP, stringMap.buildData()));
         LOGGER.info("------------------------------------------------------------------");
     }

@@ -21,6 +21,13 @@ package org.sonar.plugins.fileparser.ui;
 
 import org.sonar.api.web.*;
 
+@UserRole(UserRole.ADMIN)
+@Description("Dynamically display values from a property file")
+@WidgetCategory("File Parser")
+@WidgetProperties({
+        @WidgetProperty(key ="caption",
+        description= "Possibility to insert a custom caption")
+})
 public class FileParserWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
   public String getId() {

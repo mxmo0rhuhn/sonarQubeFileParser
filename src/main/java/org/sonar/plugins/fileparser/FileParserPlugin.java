@@ -54,16 +54,6 @@ import java.util.List;
                 module = false),
         @Property(
                 // key has to be unique
-                key = FileParserPlugin.CAPTION,
-                name = "File Path Plugin",
-                description = "Specify if you want a special caption for the displayed information",
-                defaultValue = "File Parser Plugin",
-                global = true,
-                project = true,
-                module = false),
-
-        @Property(
-                // key has to be unique
                 key = FileParserPlugin.REGEX_STRING,
                 name = "Regular Expression",
                 description = "Regular Expression to split each line of the file. Only the first two results of the split will be considered",
@@ -78,7 +68,6 @@ public final class FileParserPlugin extends SonarPlugin {
     // modify the following property (variable name, value) to fit your plugin needs
     public static final String FOLDER_PATH = "sonar.fileParser.filePath";
     public static final String FILE_NAME = "sonar.fileParser.fileName";
-    public static final String CAPTION = "sonar.fileParser.caption";
     public static final String REGEX_STRING = "sonar.fileParser.regex";
 
     // This is where you're going to declare all your Sonar extensions
