@@ -31,7 +31,6 @@ import org.sonar.api.resources.Project;
 import org.sonar.plugins.fileparser.FileParserPlugin;
 
 import java.io.*;
-import java.util.Map;
 
 public class FileParserSensor implements Sensor {
 
@@ -68,12 +67,12 @@ public class FileParserSensor implements Sensor {
     public void analyse(Project project, SensorContext sensorContext) {
         LOGGER.info("------------------------------------------------------------------");
         LOGGER.info("File Parser Plugin");
-        LOGGER.info("File path: " + path);
-        LOGGER.info("File name: " + name);
+        String filePath = path + "/" + name;
+        LOGGER.info("Searching for File: " + filePath);
 
         PropertiesBuilder<String, String> stringMap = new PropertiesBuilder<String, String>();
 
-        File metricsFile = new File(path+"/"+name);
+        File metricsFile = new File(filePath);
         try {
             BufferedReader myBuffy = new BufferedReader(new FileReader(
                     metricsFile));

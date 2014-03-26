@@ -26,6 +26,7 @@ import org.sonar.api.web.*;
 @WidgetCategory("File Parser")
 @WidgetProperties({
         @WidgetProperty(key ="caption",
+        defaultValue = "File Parser Plugin",
         description= "Possibility to insert a custom caption")
 })
 public class FileParserWidget extends AbstractRubyTemplate implements RubyRailsWidget {
