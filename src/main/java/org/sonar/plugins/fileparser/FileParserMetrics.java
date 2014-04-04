@@ -31,7 +31,7 @@ public final class FileParserMetrics implements Metrics {
 
     // Format: Key, name, value type
     public static final Metric STRING_MAP =
-        new Metric.Builder(FILEPARSER_VALUES_KEY, "Information from the file parser plugin", Metric.ValueType.STRING)
+        new Metric.Builder(FILEPARSER_VALUES_KEY, "Information from the file parser plugin", Metric.ValueType.DATA)
     	.setDescription("All metrics read by the file")
                     .setQualitative(false)
                     .create();
