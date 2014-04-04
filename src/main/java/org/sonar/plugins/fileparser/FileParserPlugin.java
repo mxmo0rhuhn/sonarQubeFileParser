@@ -52,6 +52,30 @@ import java.util.List;
                 defaultValue = "=",
                 global = true,
                 project = true,
+                module = false),
+        @Property(
+                key = FileParserPlugin.GROUP_IDENTIFIER,
+                name = "Group Identifier",
+                description = "Identifer for a Groupvalue",
+                defaultValue = "G",
+                global = true,
+                project = true,
+                module = false),
+        @Property(
+                key = FileParserPlugin.KEY_VALUE_IDENTIFIER,
+                name = "KeyValue Identifier",
+                description = "Identifer for a Key/Value pair",
+                defaultValue = "K",
+                global = true,
+                project = true,
+                module = false),
+        @Property(
+                key = FileParserPlugin.LINE_IDENTIFIER,
+                name = "Line Identifier",
+                description = "Identifer for a Linevalue",
+                defaultValue = "L",
+                global = true,
+                project = true,
                 module = false)
 })
 
@@ -63,7 +87,10 @@ public final class FileParserPlugin extends SonarPlugin {
     public static final String FOLDER_PATH = "sonar.fileParser.filePath";
     public static final String FILE_NAME = "sonar.fileParser.fileName";
     public static final String REGEX_STRING = "sonar.fileParser.regex";
-
+    public static final String GROUP_IDENTIFIER = "sonar.fileParser.groupIdentifier";
+    public static final String KEY_VALUE_IDENTIFIER = "sonar.fileParser.keyValueIdentifier";
+    public static final String LINE_IDENTIFIER = "sonar.fileParser.lineIdentifier";
+    
     // This is where you're going to declare all your Sonar extensions
     public List getExtensions() {
         return Arrays.asList(
