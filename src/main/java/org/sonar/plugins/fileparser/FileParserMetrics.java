@@ -27,12 +27,12 @@ import java.util.List;
 
 public final class FileParserMetrics implements Metrics {
 
-    public static final String STRING_MAP_KEY = "fileParser-values";
+    public static final String FILEPARSER_VALUES_KEY = "fileParser-values";
 
     // Format: Key, name, value type
     public static final Metric STRING_MAP =
-            new Metric.Builder(STRING_MAP_KEY, "Information from the file parser plugin", Metric.ValueType.DATA)
-                    .setDescription("All metrics read by the file")
+        new Metric.Builder(FILEPARSER_VALUES_KEY, "Information from the file parser plugin", Metric.ValueType.STRING)
+    	.setDescription("All metrics read by the file")
                     .setQualitative(false)
                     .create();
 

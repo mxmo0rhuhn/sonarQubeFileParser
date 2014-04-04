@@ -19,33 +19,31 @@
  */
 package org.sonar.plugins.fileparser.batch;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.config.Settings;
-import org.sonar.api.measures.PropertiesBuilder;
-import org.sonar.plugins.fileparser.FileParserMetrics;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.config.Settings;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.resources.Project;
+import org.sonar.plugins.fileparser.FileParserMetrics;
 import org.sonar.plugins.fileparser.FileParserPlugin;
-
-import java.io.*;
 
 public class FileParserSensor implements Sensor {
 
-    private final Settings settings;
     private final String path;
     private final String name;
-    private final String regexString;
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
 
     public FileParserSensor(Settings settings) {
-        this.settings = settings;
         String path = settings.getString(FileParserPlugin.FOLDER_PATH);
         String name = settings.getString(FileParserPlugin.FILE_NAME);
-        this.regexString = settings.getString(FileParserPlugin.REGEX_STRING);
 
         if(path.equals(FileParserPlugin.DEFAULT_PATH)) {
             path = settings.getString("sonar.projectBaseDir");
@@ -70,30 +68,19 @@ public class FileParserSensor implements Sensor {
         String filePath = path + "/" + name;
         LOGGER.info("Searching for File: " + filePath);
 
-        PropertiesBuilder<String, String> stringMap = new PropertiesBuilder<String, String>();
-
-        File metricsFile = new File(filePath);
+        String fileData = "";
+        
         try {
-            BufferedReader myBuffy = new BufferedReader(new FileReader(
-                    metricsFile));
-            String line;
-            String[] splitResult;
+            File metricsFile = new File(filePath);
+            fileData = FileUtils.readFileToString(metricsFile);
 
-            while ((line = myBuffy.readLine()) != null) {
-                LOGGER.info("Found Line:" + line);
-                splitResult = line.split(regexString);
-                stringMap.add(splitResult[0], splitResult[1]);
-                LOGGER.info("Key: " + splitResult[0]);
-                LOGGER.info("Value: " + splitResult[1]);
-            }
-            myBuffy.close();
         } catch (FileNotFoundException e) {
             LOGGER.error("No file found at the specified destination");
         } catch (IOException e) {
             LOGGER.error("Could not read file");
         }
-        LOGGER.info("Extracted information: " + stringMap.buildData().toString());
-        sensorContext.saveMeasure(new Measure(FileParserMetrics.STRING_MAP, stringMap.buildData()));
+        LOGGER.info("Extracted information: " + fileData);
+        sensorContext.saveMeasure(new Measure(FileParserMetrics.STRING_MAP, fileData));
         LOGGER.info("------------------------------------------------------------------");
     }
 }
