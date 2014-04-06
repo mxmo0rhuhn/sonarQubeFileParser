@@ -79,7 +79,8 @@ public class FileParserSensor implements Sensor {
         } catch (IOException e) {
             LOGGER.error("Could not read file");
         }
-        LOGGER.info("Extracted information: " + fileData);
+        LOGGER.info("Extracted information: " );
+        LOGGER.info(fileData);
         sensorContext.saveMeasure(new Measure(FileParserMetrics.STRING_MAP, fileData));
         LOGGER.info("------------------------------------------------------------------");
     }
