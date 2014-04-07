@@ -19,11 +19,11 @@
  */
 package org.sonar.plugins.fileparser;
 
-import org.sonar.plugins.fileparser.batch.FileParserSensor;
-import org.sonar.plugins.fileparser.ui.FileParserWidget;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
+import org.sonar.plugins.fileparser.batch.FileParserSensor;
+import org.sonar.plugins.fileparser.ui.FileParserWidget;
 
 import java.util.Arrays;
 import java.util.List;
@@ -82,8 +82,8 @@ import java.util.List;
 public final class FileParserPlugin extends SonarPlugin {
 
 
-    public static final String DEFAULT_PATH = "Working directory";
-    public static final String DEFAULT_FILE = "Artifact ID + .fileParser";
+    public static final String DEFAULT_PATH = "SonarQube working directory";
+    public static final String DEFAULT_FILE = "SonarQube project key + .fileParser";
     public static final String FOLDER_PATH = "sonar.fileParser.filePath";
     public static final String FILE_NAME = "sonar.fileParser.fileName";
     public static final String REGEX_STRING = "sonar.fileParser.regex";

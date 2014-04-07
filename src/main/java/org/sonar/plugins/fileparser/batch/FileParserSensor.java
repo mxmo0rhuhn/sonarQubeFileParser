@@ -19,10 +19,6 @@
  */
 package org.sonar.plugins.fileparser.batch;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +30,10 @@ import org.sonar.api.resources.Project;
 import org.sonar.plugins.fileparser.FileParserMetrics;
 import org.sonar.plugins.fileparser.FileParserPlugin;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class FileParserSensor implements Sensor {
 
     private final String path;
@@ -42,18 +42,19 @@ public class FileParserSensor implements Sensor {
 
 
     public FileParserSensor(Settings settings) {
-        String path = settings.getString(FileParserPlugin.FOLDER_PATH);
-        String name = settings.getString(FileParserPlugin.FILE_NAME);
+        String pathFromSettings = settings.getString(FileParserPlugin.FOLDER_PATH);
+        String nameFromSettings = settings.getString(FileParserPlugin.FILE_NAME);
 
-        if(path.equals(FileParserPlugin.DEFAULT_PATH)) {
-            path = settings.getString("sonar.projectBaseDir");
+        //
+        if(pathFromSettings.equals(FileParserPlugin.DEFAULT_PATH)) {
+            pathFromSettings = settings.getString("sonar.projectBaseDir");
         }
 
-        if(name.equals(FileParserPlugin.DEFAULT_FILE)) {
-            name = settings.getString("POM_ARTIFACTID") + ".fileParser";
+        if(nameFromSettings.equals(FileParserPlugin.DEFAULT_FILE)) {
+            nameFromSettings = settings.getString("sonar.projectKey") + ".fileParser";
         }
-        this.path = path;
-        this.name = name;
+        this.path = pathFromSettings;
+        this.name = nameFromSettings;
     }
 
     public boolean shouldExecuteOnProject(Project project) {
