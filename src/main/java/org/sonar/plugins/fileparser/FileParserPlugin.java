@@ -81,7 +81,6 @@ import java.util.List;
 
 public final class FileParserPlugin extends SonarPlugin {
 
-
     public static final String DEFAULT_PATH = "SonarQube working directory";
     public static final String DEFAULT_FILE = "SonarQube project key + .fileParser";
     public static final String FOLDER_PATH = "sonar.fileParser.filePath";

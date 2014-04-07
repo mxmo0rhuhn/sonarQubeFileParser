@@ -40,7 +40,6 @@ public class FileParserSensor implements Sensor {
     private final String name;
     private static final Logger LOGGER = LoggerFactory.getLogger(FileParserSensor.class);
 
-
     public FileParserSensor(Settings settings) {
         String pathFromSettings = settings.getString(FileParserPlugin.FOLDER_PATH);
         String nameFromSettings = settings.getString(FileParserPlugin.FILE_NAME);
