@@ -33,9 +33,9 @@
                     <tr>
                             <td align="left"> <%= parts[1] -%> </td>
                             <% if parts[2].casecmp("true") %>
-                                <%= image_tag("OK.png") %>
+                                <td align="left" style="padding-left: 10px;"> <%= image_tag("/images/OK.png") %> </td>
                             <% elsif parts[2].casecmp("false") %>
-                                <%= image_tag("NOK.png") %>
+                                <td align="left" style="padding-left: 10px;"> <%= image_tag("/images/NOK.png") %> </td>
                             <% else %>
                                 <td align="left" style="padding-left: 10px;"> <%= parts[2] -%> </td>
                             <% end %>
