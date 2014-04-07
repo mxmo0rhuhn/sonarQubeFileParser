@@ -15,3 +15,5 @@ Another=One
 will be displayed as:
 
 ![alt text](https://raw.githubusercontent.com/mxmo0rhuhn/sonarQubeFileParser/master/sample.png "A sample of some Properties")
+
+Boolean pictures: "Must Have" by [Visual Pharm](http://icons8.com/) distributed under [Creative Commons (Attribution 3.0 Unported)](http://creativecommons.org/licenses/by-nd/3.0/)

@@ -38,7 +38,7 @@ public class FileParserSensor implements Sensor {
 
     private final String path;
     private final String name;
-    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileParserSensor.class);
 
 
     public FileParserSensor(Settings settings) {
@@ -63,7 +63,7 @@ public class FileParserSensor implements Sensor {
     }
 
     public void analyse(Project project, SensorContext sensorContext) {
-        LOGGER.info("------------------------------------------------------------------");
+        LOGGER.debug("------------------------------------------------------------------");
         LOGGER.info("File Parser Plugin");
         String filePath = path + "/" + name;
         LOGGER.info("Searching for File: " + filePath);
@@ -79,9 +79,9 @@ public class FileParserSensor implements Sensor {
         } catch (IOException e) {
             LOGGER.error("Could not read file");
         }
-        LOGGER.info("Extracted information: " );
-        LOGGER.info(fileData);
+        LOGGER.debug("Extracted information: " );
+        LOGGER.debug(fileData);
         sensorContext.saveMeasure(new Measure(FileParserMetrics.STRING_MAP, fileData));
-        LOGGER.info("------------------------------------------------------------------");
+        LOGGER.debug("------------------------------------------------------------------");
     }
 }

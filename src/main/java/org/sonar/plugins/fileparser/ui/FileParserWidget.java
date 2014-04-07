@@ -42,7 +42,7 @@ public class FileParserWidget extends AbstractRubyTemplate implements RubyRailsW
   @Override
   protected String getTemplatePath() {
  // TODO DEBUG ONLY
-    return "/root/widget.html.erb";
-//      return "/fileparser/fileparser_widget.html.erb";
+//    return "/root/widget.html.erb";
+      return "/fileparser/fileparser_widget.html.erb";
   }
 }

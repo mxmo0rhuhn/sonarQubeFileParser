@@ -1,3 +1,15 @@
 G=This is a title 
 K=Key=Value
-L=Another
+L=Or Just a simple line
+L=The strings are not escaped - so you can use your own <em> HTML inside </em>
+G=This is another title
+L=You can organize your imports with this
+K=Question=42
+K=My important KPI=1
+K=Another important KPI=1
+K=Some other stuff i'd like to show=2
+K=Followed by some numbers=3
+K=And Strings=some text
+K=And even cool booleans=true
+K=And even cool booleans=false
+
