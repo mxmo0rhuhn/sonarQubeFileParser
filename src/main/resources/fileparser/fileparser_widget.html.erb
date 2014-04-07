@@ -32,9 +32,9 @@
         <% elsif line.start_with?(keyValueIdentifier) && (parts.count >= 3) %>
                     <tr>
                             <td align="left"> <%= parts[1] -%> </td>
-                            <% if parts[2].casecmp("true")   %>
+                            <% if (parts[2].strip.upcase == "TRUE") %>
                                 <td align="left" style="padding-left: 10px;"> <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'OK.png')) %> </td>)
-                            <% elsif parts[2].casecmp("false")  %>
+                            <% elsif (parts[2].strip.upcase == "FALSE") %>
                                 <td align="left" style="padding-left: 10px;"> <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'NOK.png')) %> </td>)
                             <% else %>
                                 <td align="left" style="padding-left: 10px;"> <%= parts[2] -%> </td>
