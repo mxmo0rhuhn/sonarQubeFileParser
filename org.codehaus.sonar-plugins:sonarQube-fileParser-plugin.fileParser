@@ -1,15 +1,13 @@
 G=This is a title 
-K=Key=Value
-L=Or Just a simple line
-L=The strings are not escaped - so you can use your own <em>HTML</em> inside
+K=Key value pairs=Possible
+L=Or just a simple lines
+L=The strings are not escaped - so you can use your own <em>HTML Code</em> inside
 G=This is another title
-L=You can organize your imports with this
+K=Even cool booleans=true
+K=With pictures if you like=false
+G=Titles help you to display content well structured
 K=Question=42
 K=My important KPI=1
-K=Another important KPI=1
-K=Some other stuff i'd like to show=2
-K=Followed by some numbers=3
-K=And Strings=some text
-K=And even cool booleans=true
-K=With pictures if you like=true
-K=This is bad!=false
+K=Another important KPI=2
+K=Some other stuff i'd like to show=3
+K=Followed by some numbers=5

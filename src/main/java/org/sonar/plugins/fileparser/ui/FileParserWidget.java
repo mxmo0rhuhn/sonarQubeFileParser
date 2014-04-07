@@ -30,7 +30,7 @@ import org.sonar.api.web.*;
         description= "Possibility to insert a custom caption"),
         @WidgetProperty(key ="boolAsImage",
         type = WidgetPropertyType.BOOLEAN,
-        defaultValue = "true",
+        defaultValue = "True",
         description= "Do you want to display boolean values as pictures?")
 })
 public class FileParserWidget extends AbstractRubyTemplate implements RubyRailsWidget {

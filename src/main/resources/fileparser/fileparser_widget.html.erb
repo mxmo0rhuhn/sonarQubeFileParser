@@ -32,9 +32,9 @@
         <% elsif line.start_with?(keyValueIdentifier) && (parts.count >= 3) %>
                     <tr>
                             <td align="left" width="50%" > <%= parts[1] -%> </td>
-                            <% if (parts[2].strip.upcase == "TRUE" && widget_properties['boolAsImage']) %>
+                            <% if (parts[2].strip.upcase == "TRUE" && widget_properties['boolAsImage'].upcae = "TRUE" ) %>9
                                 <td align="left" style="padding-left: 10px;" width="50% > <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'OK.png')) %> </td>
-                            <% elsif (parts[2].strip.upcase == "FALSE" && widget_properties['boolAsImage']) %>
+                            <% elsif (parts[2].strip.upcase == "FALSE" && widget_properties['boolAsImage'].upcae = "TRUE" ) %>
                                 <td align="left" style="padding-left: 10px;" width="50% >  <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'NOK.png')) %> </td>
                             <% else %>
                                 <td align="left" style="padding-left: 10px;" width="50%" > <%= parts[2] -%> </td>
