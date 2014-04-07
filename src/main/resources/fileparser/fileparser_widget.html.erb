@@ -22,21 +22,19 @@
         if line.start_with?(groupIdentifier) && (parts.count >= 2)
 %>
             <%= toAdd -%>
-<% toAdd =  "</div> </tbody> </table> </tr>" %>
+<% toAdd =  "</tbody> </table> </tr>" %>
                     <tr>
                             <h3 style="padding-top: 15px;"><%= parts[1] -%></h3>
-
-                            <table width="100%">
+                            <table width="99%">
                                     <tbody>
-                                            <div class="dashbox">
         <% elsif line.start_with?(keyValueIdentifier) && (parts.count >= 3) %>
                     <tr>
                             <% if ((parts[2].strip.upcase == "TRUE") && (widget_properties['boolAsImage'] )) %>
                                 <td align="left" width="50%" vertical-align="middle"> <%= parts[1] -%> </td>
-                                <td align="left" style="padding-left: 10px;" width="50% > <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'OK.png')) %> </td>
+                                <td align="left" style="padding-left: 10px;" > <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'OK.png')) %> </td>
                             <% elsif ((parts[2].strip.upcase == "FALSE") && (widget_properties['boolAsImage'] )) %>
                                 <td align="left" width="50%" vertical-align="middle" > <%= parts[1] -%> </td>
-                                <td align="left" style="padding-left: 10px;" width="50% >  <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'NOK.png')) %> </td>
+                                <td align="left" style="padding-left: 10px;" >  <%= image_tag( url_for_static(:plugin => 'sonarQubefileParserplugin', :path => 'NOK.png')) %> </td>
                             <% else %>
                                 <td align="left" width="50%" > <%= parts[1] -%> </td>
                                 <td align="left" style="padding-left: 10px;" width="50%" > <%= parts[2] -%> </td>
