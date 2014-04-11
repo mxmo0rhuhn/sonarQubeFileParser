@@ -1,15 +1,14 @@
 <h2><%=h widget_properties['caption']-%></h2>
-
 <%
+    file = measure('fileParser-values')
+
+    # Only display if data is given
+    if file && file.data
+        toAdd=""
         regex = Property.value('sonar.fileParser.regex', @project.id, configuration('sonar.fileParser.regex')  )
         groupIdentifier = Property.value('sonar.fileParser.groupIdentifier', @project.id, configuration('sonar.fileParser.groupIdentifier')  )
         keyValueIdentifier = Property.value('sonar.fileParser.keyValueIdentifier', @project.id, configuration('sonar.fileParser.keyValueIdentifier')  )
         lineIdentifier = Property.value('sonar.fileParser.lineIdentifier', @project.id, configuration('sonar.fileParser.lineIdentifier')  )
-        file = measure('fileParser-values')
-        toAdd=""
-
-    # Only display if data is given
-    if file && file.data
 %>
     <table width="100%">
             <tbody>
