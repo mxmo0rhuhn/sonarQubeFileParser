@@ -15,7 +15,8 @@
 
 <% 
         file = file.data
-        file.each_line do  |line| 
+    unless file.nil?
+        file.each_line do  |line|
         
         parts=line.split(regex)
         if line.start_with?(groupIdentifier) && (parts.count >= 2)
@@ -53,6 +54,7 @@
                     </tr>
         <% 
           end
+    end
     end
         %>
             <%= toAdd -%>
