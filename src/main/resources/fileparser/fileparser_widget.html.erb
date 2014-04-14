@@ -3,7 +3,7 @@
     file = measure('fileParser-values')
 
     # Only display if data is given
-    unless file.nil? || file.data.nil?
+    unless file.nil?
         toAdd=""
         regex = Property.value('sonar.fileParser.regex', @project.id, configuration('sonar.fileParser.regex')  )
         groupIdentifier = Property.value('sonar.fileParser.groupIdentifier', @project.id, configuration('sonar.fileParser.groupIdentifier')  )
