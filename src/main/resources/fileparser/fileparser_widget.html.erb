@@ -3,7 +3,7 @@
     file = measure('fileParser-values')
 
     # Only display if data is given
-    unless file.nil?
+    if !file.nil?
         toAdd=""
         regex = Property.value('sonar.fileParser.regex', @project.id, configuration('sonar.fileParser.regex')  )
         groupIdentifier = Property.value('sonar.fileParser.groupIdentifier', @project.id, configuration('sonar.fileParser.groupIdentifier')  )
@@ -15,7 +15,7 @@
 
 <% 
         file = file.data
-    unless file.nil?
+    if !file.nil?
         file.each_line do  |line|
         
         parts=line.split(regex)
