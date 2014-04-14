@@ -3,31 +3,34 @@
     file = measure('fileParser-values')
 
     # Only display if data is given
-    if !(file.nil?)
+    unless file.nil?
         toAdd=""
         regex = Property.value('sonar.fileParser.regex', @project.id, configuration('sonar.fileParser.regex')  )
         groupIdentifier = Property.value('sonar.fileParser.groupIdentifier', @project.id, configuration('sonar.fileParser.groupIdentifier')  )
         keyValueIdentifier = Property.value('sonar.fileParser.keyValueIdentifier', @project.id, configuration('sonar.fileParser.keyValueIdentifier')  )
         lineIdentifier = Property.value('sonar.fileParser.lineIdentifier', @project.id, configuration('sonar.fileParser.lineIdentifier')  )
+
+        # Extract measure infos
+        file = file.data
+
+        unless file.nil?
 %>
     <table width="100%">
             <tbody>
 
 <% 
-        file = file.data
-    if !(file.nil?)
-        file.each_line do  |line|
+                file.each_line do  |line|
         
-        parts=line.split(regex)
-        if line.start_with?(groupIdentifier) && (parts.count >= 2)
+                parts=line.split(regex)
+                if line.start_with?(groupIdentifier) && (parts.count >= 2)
 %>
             <%= toAdd -%>
-<% toAdd =  "</tbody> </table> </tr>" %>
+                <% toAdd =  "</tbody> </table> </tr>" %>
                     <tr>
                             <h3 style="padding-top: 15px;"><%= parts[1] -%></h3>
                             <table width="99%">
                                     <tbody>
-        <% elsif line.start_with?(keyValueIdentifier) && (parts.count >= 3) %>
+                <% elsif line.start_with?(keyValueIdentifier) && (parts.count >= 3) %>
                     <tr>
                             <% if ((parts[2].strip.upcase == "TRUE") && (widget_properties['boolAsImage'] )) %>
                                 <td align="left" width="50%" vertical-align="middle"> <%= parts[1] -%> </td>
@@ -38,44 +41,37 @@
                             <% else %>
                                 <td align="left" width="50%" > <%= parts[1] -%> </td>
                                 <td align="left" style="padding-left: 10px;" width="50%" > <%= parts[2] -%> </td>
-                            <% end %>
+                                <% end %>
 
                     </tr>
-        <% elsif line.start_with?(lineIdentifier) && (parts.count >= 2) %> 
+                <% elsif line.start_with?(lineIdentifier) && (parts.count >= 2) %> 
                     <tr>
                           <td colspan="2"> <%= parts[1] -%> </td>
                     </tr>
-        <% else %>
+                <% else %>
                     <tr>
                           <td colspan="2"> Error occured - can not parse line </td>
                     </tr>
                     <tr>
                           <td colspan="2">Line: <%= line -%> </td>
                     </tr>
-        <% 
-          end
-    end
-    end
-        %>
+<% 
+                end
+        end
+
+%>
             <%= toAdd -%>
             </tbody>
     </table>
-    <!-- Project ID = <%= @project.id-%> -->
-<% else %>
-        <p> Error occured - no Data to display </p>
+        <% else %>
+                <p> Error occured - no File contains no data </p>
+                <!-- File = <%=h file -%> -->
+                <!-- File = nil = <%=h file.nil? -%>-->
+<% 
+      end
+    else %>
+        <p> No Data to display </p>
         <!-- File = <%=h file -%> -->
-        <!-- File data = nil = <%=h file.data.nil? -%>-->
         <!-- File = nil = <%=h file.nil? -%>-->
-        <!-- File text value = <%=h file.text_value -%>-->
-        <!-- File text value class = <%=h file.text_value.class.name -%>-->
-        <!-- File Formatted value = <%=h file.formatted_value -%>-->
-        <!-- File Typed value = <%=h file.typed_value -%>-->
-        <!-- File Value = <%=h file.value -%>-->
-        <!-- File Class Name <%=h file.class.name%> -->
-        <!-- File Class <%=h file.class -%>-->
-        <!-- File Class <%=h file.to_s -%>-->
-        <!-- Metric <%=h file.metric -%>-->
-        <!-- Metric Value Type <%=h file.metric.value_type -%>-->
-        <!-- Metric Display <%=h file.metric.display? -%>-->
-        <!-- Metric key <%=h file.metric_key -%>-->
 <% end %>
+<!-- Project ID = <%= @project.id-%> -->
