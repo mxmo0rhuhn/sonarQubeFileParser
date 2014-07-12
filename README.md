@@ -33,3 +33,7 @@ E.g. you can change the seperator to any other string to have the possibility to
 
 
 Boolean pictures: "Must Have" by [Visual Pharm](http://icons8.com/) distributed under [Creative Commons (Attribution 3.0 Unported)](http://creativecommons.org/licenses/by-nd/3.0/)
+
+This plugin is free software: You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+The plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
