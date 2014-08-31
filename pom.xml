@@ -4,12 +4,12 @@
   <parent>
     <groupId>org.codehaus.sonar-plugins</groupId>
     <artifactId>parent</artifactId>
-    <version>15</version>
+    <version>17</version>
   </parent>
   
   <artifactId>sonarQube-fileParser-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.2-SNAPSHOT</version>
 
   <name>SonarQube File Parser Plugin</name>
   <description>This SonarQube Plugin provides the possibility to display custom metrics from a property file in your dashboards.</description>
@@ -28,8 +28,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    <sonar.buildVersion>4.1</sonar.buildVersion>
+    <sonar.buildVersion>4.4</sonar.buildVersion>
     <sonar.pluginName>SonarQube File Parser Plugin</sonar.pluginName>    
     <jdk.min.version>1.5</jdk.min.version>
   </properties>
