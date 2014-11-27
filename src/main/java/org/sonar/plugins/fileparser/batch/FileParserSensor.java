@@ -56,12 +56,14 @@ public class FileParserSensor implements Sensor {
         this.name = nameFromSettings;
     }
 
+    @Override
     public boolean shouldExecuteOnProject(Project project) {
         // This sensor is executed on any type of projects
         // Modify the code if the sensor should be executed based on a condition
         return true;
     }
 
+    @Override
     public void analyse(Project project, SensorContext sensorContext) {
         LOGGER.debug("------------------------------------------------------------------");
         LOGGER.info("File Parser Plugin");

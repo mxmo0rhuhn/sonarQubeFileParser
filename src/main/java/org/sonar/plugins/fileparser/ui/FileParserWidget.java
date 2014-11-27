@@ -26,27 +26,29 @@ import org.sonar.api.web.*;
 @WidgetCategory("File Parser")
 @WidgetProperties({
         @WidgetProperty(key ="caption",
-                        defaultValue = "File Parser Plugin",
-                        description= "Possibility to insert a custom caption"),
+                defaultValue = "File Parser Plugin",
+                description= "Possibility to insert a custom caption"),
         @WidgetProperty(key ="boolAsImage",
-                        type = WidgetPropertyType.BOOLEAN,
-                        defaultValue = "True",
-                        description= "Do you want to display boolean values as pictures?")
+                type = WidgetPropertyType.BOOLEAN,
+                defaultValue = "True",
+                description= "Do you want to display boolean values as pictures?")
 })
 public class FileParserWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
-  public String getId() {
-    return "FileParserWidget";
-  }
+    @Override
+    public String getId() {
+        return "FileParserWidget";
+    }
 
-  public String getTitle() {
-    return "File Parser Widget";
-  }
+    @Override
+    public String getTitle() {
+        return "File Parser Widget";
+    }
 
-  @Override
-  protected String getTemplatePath() {
- // DEBUG
- //   return "/root/widget.html.erb";
-      return "/fileparser/fileparser_widget.html.erb";
-  }
+    @Override
+    protected String getTemplatePath() {
+        // DEBUG
+        //   return "/root/widget.html.erb";
+        return "/fileparser/fileparser_widget.html.erb";
+    }
 }
