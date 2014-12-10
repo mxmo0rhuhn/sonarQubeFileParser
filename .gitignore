@@ -19,3 +19,6 @@ target/*
 # Package Files #
 *.war
 *.ear
+
+# custom shell scripts
+*.sh

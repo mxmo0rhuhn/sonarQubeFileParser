@@ -9,15 +9,17 @@
   
   <artifactId>sonarQube-fileParser-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>0.3</version>
+  <version>0.4-SNAPSHOT</version>
 
-  <name>SonarQube File Parser Plugin</name>
+  <name>File Parser Plugin</name>
+  <website>https://github.com/mxmo0rhuhn/sonarQubeFileParser</website>
   <description>This SonarQube Plugin provides the possibility to display custom metrics from a property file in your dashboards.</description>
   <inceptionYear>2014</inceptionYear>
 
   <organization>
     <name>Max Schrimpf</name>
   </organization>
+
   <licenses>
     <license>
       <name>GNU LGPL 3</name>
