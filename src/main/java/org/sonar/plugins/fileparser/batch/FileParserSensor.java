@@ -1,5 +1,5 @@
 /*
- * SonarQube File Parser Plugin
+ * File Parser Plugin
  * Copyright (C) 2014 Max Schrimpf
  * dev@sonar.codehaus.org
  *

@@ -12,7 +12,7 @@
   <version>0.4-SNAPSHOT</version>
 
   <name>File Parser Plugin</name>
-  <website>https://github.com/mxmo0rhuhn/sonarQubeFileParser</website>
+  <url>https://github.com/mxmo0rhuhn/sonarQubeFileParser</url>
   <description>This SonarQube Plugin provides the possibility to display custom metrics from a property file in your dashboards.</description>
   <inceptionYear>2014</inceptionYear>
 
