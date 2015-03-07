@@ -9,7 +9,7 @@
   
   <artifactId>sonarQube-fileParser-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>0.5</version>
+  <version>0.6-SNAPSHOT</version>
 
   <name>File Parser Plugin</name>
   <url>https://github.com/mxmo0rhuhn/sonarQubeFileParser</url>
