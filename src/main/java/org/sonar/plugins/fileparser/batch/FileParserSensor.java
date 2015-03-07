@@ -38,6 +38,8 @@ public class FileParserSensor implements Sensor {
 
     private final String path;
     private final String name;
+    private final String separator;
+    private final int numberFiles;
     private static final Logger LOGGER = LoggerFactory.getLogger(FileParserSensor.class);
 
     public FileParserSensor(Settings settings) {
@@ -53,6 +55,8 @@ public class FileParserSensor implements Sensor {
         }
         this.path = pathFromSettings;
         this.name = nameFromSettings;
+        this.numberFiles  = settings.getInt(FileParserPlugin.FILE_NUMBER);
+        this.separator  = settings.getString(FileParserPlugin.FILE_SEPARATOR);
     }
 
     @Override
@@ -64,21 +68,45 @@ public class FileParserSensor implements Sensor {
 
     @Override
     public void analyse(Project project, SensorContext sensorContext) {
-        LOGGER.debug("------------------------------------------------------------------");
-        LOGGER.info("File Parser Plugin");
-        String filePath = path + "/" + name;
-        LOGGER.info("Searching for File: " + filePath);
 
         String fileData = "";
-        
-        try {
-            File metricsFile = new File(filePath);
-            fileData = FileUtils.readFileToString(metricsFile);
 
-        } catch (FileNotFoundException e) {
-            LOGGER.error("No file found at the specified destination");
-        } catch (IOException e) {
-            LOGGER.error("Could not read file");
+        LOGGER.debug("------------------------------------------------------------------");
+        LOGGER.info("File Parser Plugin");
+        LOGGER.info("Files to parse " + numberFiles);
+        String filePath = path + "/" + name;
+        String curFilePath ;
+
+        if(numberFiles > 1) {
+            for(int i = 1 ; i <= numberFiles; i++) {
+                curFilePath = filePath + i;
+                LOGGER.info("Searching for File: " + curFilePath);
+
+                if(i > 1) {
+                    fileData += separator;
+                }
+                try {
+                    File metricsFile = new File(curFilePath);
+                    fileData += FileUtils.readFileToString(metricsFile);
+
+                } catch (FileNotFoundException e) {
+                    LOGGER.error("No file found at the specified destination");
+                } catch (IOException e) {
+                    LOGGER.error("Could not read file");
+                }
+            }
+
+        } else {
+            LOGGER.info("Searching for File: " + filePath);
+            try {
+                File metricsFile = new File(filePath);
+                fileData = FileUtils.readFileToString(metricsFile);
+
+            } catch (FileNotFoundException e) {
+                LOGGER.error("No file found at the specified destination");
+            } catch (IOException e) {
+                LOGGER.error("Could not read file");
+            }
         }
         LOGGER.debug("Extracted information: " );
         LOGGER.debug(fileData);

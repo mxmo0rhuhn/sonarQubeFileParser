@@ -28,6 +28,10 @@ import org.sonar.api.web.*;
         @WidgetProperty(key ="caption",
                 defaultValue = "File Parser Plugin",
                 description= "Possibility to insert a custom caption"),
+        @WidgetProperty(key ="fileNr",
+                type = WidgetPropertyType.INTEGER,
+                defaultValue = "1",
+                description= "If more than one file is parsed: Which file shall be displayed in this widget?"),
         @WidgetProperty(key ="boolAsImage",
                 type = WidgetPropertyType.BOOLEAN,
                 defaultValue = "True",
@@ -48,7 +52,7 @@ public class FileParserWidget extends AbstractRubyTemplate implements RubyRailsW
     @Override
     protected String getTemplatePath() {
         // DEBUG
-        //   return "/root/widget.html.erb";
+        //return "/tmp/widget.html.erb";
         return "/fileparser/fileparser_widget.html.erb";
     }
 }

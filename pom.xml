@@ -9,7 +9,7 @@
   
   <artifactId>sonarQube-fileParser-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>0.4-SNAPSHOT</version>
+  <version>0.5-SNAPSHOT</version>
 
   <name>File Parser Plugin</name>
   <url>https://github.com/mxmo0rhuhn/sonarQubeFileParser</url>
@@ -31,8 +31,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.buildVersion>4.5.1</sonar.buildVersion>
-    <sonar.pluginName>SonarQube File Parser Plugin</sonar.pluginName>    
-    <jdk.min.version>1.5</jdk.min.version>
+    <sonar.pluginName>File Parser Plugin</sonar.pluginName>
+    <jdk.min.version>1.7</jdk.min.version>
   </properties>
 
   <dependencies>

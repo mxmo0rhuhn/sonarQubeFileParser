@@ -9,12 +9,25 @@
         groupIdentifier = Property.value('sonar.fileParser.groupIdentifier', @project.id, configuration('sonar.fileParser.groupIdentifier')  )
         keyValueIdentifier = Property.value('sonar.fileParser.keyValueIdentifier', @project.id, configuration('sonar.fileParser.keyValueIdentifier')  )
         lineIdentifier = Property.value('sonar.fileParser.lineIdentifier', @project.id, configuration('sonar.fileParser.lineIdentifier')  )
+        seperator = Property.value('sonar.fileParser.lineIdentifier', @project.id, configuration('sonar.fileParser.fileSeparator')  )
+        fileNr = widget_properties['fileNr']-1
 
-        # Extract measure infos
-        file = file.data
+        file = file.data.split(seperator)
 
-        unless file.nil?
+        if (file.length > fileNr)
+          file = file[fileNr]
+        else
+          if (1 < fileNr)
 %>
+            <em>File Nr <%= fileNr %> not found - displaying file Nr 1 </em>
+<%
+           end
+           # Extract measure infos
+           file = file[0]
+           end
+
+           unless file.nil?
+        %>
     <table width="100%">
             <tbody>
 
@@ -64,7 +77,7 @@
             </tbody>
     </table>
         <% else %>
-                <p> Error occured - no File contains no data </p>
+                <p> Error occured - File contains no data </p>
                 <!-- File = <%=h file -%> -->
                 <!-- File = nil = <%=h file.nil? -%>-->
 <% 

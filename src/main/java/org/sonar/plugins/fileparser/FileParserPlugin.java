@@ -28,7 +28,7 @@ import org.sonar.plugins.fileparser.ui.FileParserWidget;
 import java.util.Arrays;
 import java.util.List;
 
-@Properties({
+@Properties(value = {
         @Property(
                 key = FileParserPlugin.FOLDER_PATH,
                 name = "File Path",
@@ -40,8 +40,26 @@ import java.util.List;
         @Property(
                 key = FileParserPlugin.FILE_NAME,
                 name = "File Name",
-                description = "Specify if you want a special name for the file to be displayed",
+                description = "Specify if you want a special name for the file to be displayed. If you want to parse more than one file the plugin will search for this name with a number as suffix",
                 defaultValue = FileParserPlugin.DEFAULT_FILE,
+                global = true,
+                project = true,
+                module = false),
+        @Property(
+                key = FileParserPlugin.FILE_SEPARATOR,
+                name = "File separator",
+                type = org.sonar.api.PropertyType.STRING,
+                description  = "A Special char sequence for internal file Separation. Please don't use it in your input files",
+                defaultValue = FileParserPlugin.DEFAULT_FILE_SEPARATOR,
+                global = true,
+                project = true,
+                module = false),
+        @Property(
+                key = FileParserPlugin.FILE_NUMBER,
+                name = "Number of files",
+                type = org.sonar.api.PropertyType.INTEGER,
+                description = "Number of files you want to parse",
+                defaultValue = FileParserPlugin.DEFAULT_FILE_NUMBER,
                 global = true,
                 project = true,
                 module = false),
@@ -89,7 +107,11 @@ public final class FileParserPlugin extends SonarPlugin {
     public static final String GROUP_IDENTIFIER = "sonar.fileParser.groupIdentifier";
     public static final String KEY_VALUE_IDENTIFIER = "sonar.fileParser.keyValueIdentifier";
     public static final String LINE_IDENTIFIER = "sonar.fileParser.lineIdentifier";
-    
+    public static final String FILE_NUMBER = "sonar.fileParser.fileNumber";
+    public static final String DEFAULT_FILE_NUMBER = "1";
+    public static final String FILE_SEPARATOR = "sonar.fileParser.fileSeparator";
+    public static final String DEFAULT_FILE_SEPARATOR = "|";
+
     // This is where you're going to declare all your Sonar extensions
     public List getExtensions() {
         return Arrays.asList(
